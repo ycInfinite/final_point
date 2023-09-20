@@ -2,6 +2,7 @@ package controller
 
 import (
 	"finalpoint/dao"
+	"finalpoint/model"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"strconv"
@@ -25,5 +26,5 @@ func Page(c *gin.Context) {
 	pagesize := 20
 	bookList := dao.Page(uint(begin), pagesize)
 
-	c.JSON(200, bookList)
+	model.Success(c, 200, "ok", bookList)
 }
