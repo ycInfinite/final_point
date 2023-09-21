@@ -9,8 +9,8 @@ import (
 )
 
 func SelectAll(c *gin.Context) {
-	booklist := dao.SelectAll()
-	c.JSON(200, booklist)
+	booklist := dao.Page(0, 20)
+	model.Success(c, 200, "success", booklist)
 }
 
 func Page(c *gin.Context) {
@@ -26,5 +26,5 @@ func Page(c *gin.Context) {
 	pagesize := 20
 	bookList := dao.Page(uint(begin), pagesize)
 
-	model.Success(c, 200, "ok", bookList)
+	model.Success(c, 200, "success", bookList)
 }
